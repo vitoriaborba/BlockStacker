@@ -4,9 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fisrt Project</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Cake Stacker</title>
 </head>
 <body>
-    <p>Hello World</p>
+    <div class="game-intro">
+        <img src= alt="" class="logo-img" />
+        <br />
+        <a href="#" class="boton"> Start </a>
+        <p>Press SPACE to drop the block</p>
+      </div>
+    <div id="game-board">
+     <canvas id="canvas" width="500" height="900"></canvas>
+    </div>
+    <script type="text/javascript" src="js/block.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
