@@ -1,0 +1,31 @@
+body {
+    background-color: rgb(37, 127, 168);
+}
+header{
+    color: rgb(189, 228, 236);
+    font-size: 50px;
+    font-family: 'Monoton', cursive;
+    text-align: center;
+}
+.container {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.game-intro {
+    width: 400px;
+    height: 601px;
+    background-color: rgb(189, 228, 236);
+    border-radius: 30px 0px 0px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-left: 20px;
+    align-items: center;
+    font-family: fantasy;
+    font-size: 20px;
+    text-align: center;
+    color: rgb(22, 70, 92);
+   
+}
