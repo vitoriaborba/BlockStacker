@@ -13,13 +13,12 @@ constructor() {
     this.ySpeed = 8;
     this.height = 50;
     this.boxes = [];
-    this.cutBox = { x: 0, y:300, width: 0}
+    this.cutBox = { x: 0, width: 0}
     this.intervalId = null;
+    this.img = new Image ();
 }
 
 start() {
-  
-  
   this.boxes.splice(1, this.boxes.length - 1);
   this.boxes.push({ x: 300, y:300, width:300, height:50});
   this.mode = 'bounce';
@@ -58,6 +57,7 @@ newCutBox() {
 }
 
 drawCutBox () {
+    this.img.src = './images/bottom.png'
     this.context.fillStyle = 'black';
     this.context.fillRect(this.cutBox.x, 600 - this.cutBox.y + this.backgroundRoll, this.cutBox.width, this.height);
 }
@@ -99,6 +99,7 @@ if (this.xSpeed > 0) {
   this.newBox();
     } 
   }
+  
 collision() {
     if (this.boxes[this.currentBox].y === this.boxes[this.currentBox - 1].y + this.height) {
       
@@ -153,7 +154,6 @@ restart() {
   }
 
 uptadeGame() {
-    //this.restart();
     if (this.mode != 'gameOver') {
       this.clear();
       this.uptadeScore();
