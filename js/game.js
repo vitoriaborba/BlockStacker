@@ -1,7 +1,3 @@
-window.onload = () => {
-  const game = new Game();
-  game.start();
-}
 
 class Game {
 constructor() {
@@ -11,67 +7,53 @@ constructor() {
     this.frames = null;
     this.backgroundRoll = null;
     this.currentBox = null;
-    this.mode = ' ';
+    this.mode = '';
     this.xSpeed = null;
     this.difference = null;
     this.ySpeed = 8;
     this.height = 50;
     this.boxes = [];
-    this.cutBox = { x: 0, width: 0}
-    this.box = {
-        x: null,
-        y: null,
-        width: null,
-        height: this.height,
-    }
+    this.cutBox = { x: 0, y:300, width: 0}
+    this.intervalId = null;
 }
-start() {
-  let firstBox = this.box = { x: 300, y:300, width:300};
-  this.boxes.push(firstBox);
-  if (this.mode != 'gameOver') {
-      this.uptadeScore();
-      this.drawBox();
-      this.drawCutBox();
 
-      if (this.mode == 'bounce') {
-          this.bounce();
-      }
-      if (this.mode == 'fall') {
-          this.fall();
-      }
-      this.animateCutBox();
-      this.framePosition();
-  }
-  window.addEventListener('keydown', (event) => {
-    if (event.code === 'Space' && this.mode == 'gameOver') {
-      restart();
-    } else if (event.code === 'Space' && this.mode === 'bounce') {
-      this.mode = 'fall';
-    }
-  });
-  window.requestAnimationFrame(this.start);
+start() {
+  
+  
+  this.boxes.splice(1, this.boxes.length - 1);
+  this.boxes.push({ x: 300, y:300, width:300, height:50});
+  this.mode = 'bounce';
+  this.backgroundRoll = 0;
+  this.frames = 0;
+  this.xSpeed = 2;
+  this.currentBox = 1;
+  this.newBox();
+  this.cutBox.y = 0;
+  this.intro.innerHTML = '';
+ this.intervalId = setInterval(()=> {
+  this.uptadeGame();
+ },1000 /60)
 }
 
 newBox() {
-  this.boxes[this.currentBox] = {
+  this.boxes.push({
     x: 0,
     y: (this.currentBox + 10) * this.height,
     width: this.boxes[this.currentBox - 1].width,
-  };
+  });
   }
 
 drawBox() {
     for (let n = 0; n < this.boxes.length; n++) {
-        this.boxes[n];
         this.context.fillStyle = 'rgb(' + (136 - (n * 10)) + ',' + (192 - (n * 10)) + ',' + ( 218 - (n * 10)) + ')';
-        this.context.fillRect(this.box.x, 600 - this.box.y + this.backgroundRoll, this.box.width, this.height);
+        this.context.fillRect(this.boxes[n].x, 600 - this.boxes[n].y + this.backgroundRoll, this.boxes[n].width, this.height);
       }
 }
 
 newCutBox() {
     this.cutBox = {
-        y: boxes[currentBox].y,
-        width: difference
+        y: this.boxes[this.currentBox].y,
+        width: this.difference
     }
 }
 
@@ -83,9 +65,9 @@ drawCutBox () {
 cutBoxPosition() {
     if (this.boxes[this.currentBox].x > this.boxes[this.currentBox - 1].x) {
       this.boxes[this.currentBox].width = this.boxes[this.currentBox].width - this.difference;
-      cutBox.x = this.boxes[this.currentBox].x + this.boxes[this.currentBox].width;
+      this.cutBox.x = this.boxes[this.currentBox].x + this.boxes[this.currentBox].width;
     } else {
-      cutBox.x = this.boxes[this.currentBox].x - this.difference;
+      this.cutBox.x = this.boxes[this.currentBox].x - this.difference;
       this.boxes[this.currentBox].width = this.boxes[this.currentBox].width + this.difference;
       this.boxes[this.currentBox].x = this.boxes[this.currentBox - 1].x;
     }
@@ -107,6 +89,9 @@ bounce() {
 bounceSpeed() {
 if (this.xSpeed > 0) {
     this.xSpeed++;
+    this.currentBox++;
+    this.frames = this.height;
+    this.newBox();
 } else {
   this.xSpeed--;
   this.currentBox++;
@@ -115,10 +100,12 @@ if (this.xSpeed > 0) {
     } 
   }
 collision() {
-    if (this.boxes[this.currentBox].y == this.boxes[this.currentBox - 1].y + this.height) {
+    if (this.boxes[this.currentBox].y === this.boxes[this.currentBox - 1].y + this.height) {
+      
+    console.log('collided');
         this.mode = 'bounce';
-        let difference = this.boxes[this.currentBox].x - this.boxes[this.currentBox - 1].x;
-        if (Math.abs(difference) >= this.boxes[this.currentBox].width) {
+        this.difference = this.boxes[this.currentBox].x - this.boxes[this.currentBox - 1].x;
+        if (Math.abs(this.difference) >= this.boxes[this.currentBox].width) {
             this.gameOver();
           }
           this.newCutBox();
@@ -132,7 +119,7 @@ fall() {
     this.collision();
 }
 
-framePosition () {
+framePosition() {
     if (this.frames) {
         this.backgroundRoll++;
         this.frames--;
@@ -144,7 +131,7 @@ gameOver() {
     this.intro.innerHTML = 'Game over. <br> Press to play again!';
 }
 
-clear () {
+clear() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 }
 
@@ -165,9 +152,37 @@ restart() {
     this.intro.innerHTML = '';
   }
 
-uptadeGame () {
-    this.restart();
-    this.start();
+uptadeGame() {
+    //this.restart();
+    if (this.mode != 'gameOver') {
+      this.clear();
+      this.uptadeScore();
+      this.drawBox();
+      this.drawCutBox();
+
+      if (this.mode == 'bounce') {
+          this.bounce();
+      }
+      if (this.mode == 'fall') {
+          this.fall();
+      }
+      this.animateCutBox();
+      this.framePosition();
+  }
 }
 
 }
+
+window.addEventListener('load', function() {  
+    const game = new Game();
+    game.start();
+
+
+    window.addEventListener('keydown', (event) => {
+      if (event.code === 'Space' && game.mode == 'gameOver') {
+        game.restart();
+      } else if (event.code === 'Space' && game.mode === 'bounce') {
+        game.mode = 'fall';
+      }
+    });
+});
