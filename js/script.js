@@ -13,15 +13,15 @@
     let ySpeed = 8;
     let height = 50;
     let boxes = [];
-    
+    let cutBox = {
+      x: 0,
+      width: 0
+    };
+//Fixed box
     boxes[0] = {
       x: 300,
       y: 300,
       width: 300
-    };
-    let cutBox = {
-      x: 0,
-      width: 0
     };
      //The function that create a new box after the previous one falls.
     function newBox() {
