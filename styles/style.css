@@ -14,7 +14,7 @@ body {
     align-items: center;
 }
 .canvas {
-    background-image: url('/images/background.jpg');
+    background-image: url('/docs/assests/images/background.jpg');
     background-size: cover;
     border: solid 1px whitesmoke;
 }
