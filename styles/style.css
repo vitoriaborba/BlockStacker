@@ -20,7 +20,7 @@ body {
 }
 
 .game-intro {
-    width: 300px;
+    width: 100px;
     height: 651px;
     background-color: black;
     display: flex;

@@ -20,7 +20,7 @@ constructor() {
 
 start() {
   this.boxes.splice(1, this.boxes.length - 1);
-  this.boxes.push({ x: 250, y:300, width:300, height:50});
+  this.boxes.push({ x: 260, y:300, width:300, height:50});
   this.mode = 'bounce';
   this.backgroundRoll = 0;
   this.frames = 0;
@@ -129,11 +129,11 @@ framePosition() {
 
 gameOver() {
     this.mode = 'gameOver';
-    this.context.font = '50px Montserrat';
+    this.context.font = '60px Montserrat';
     this.context.fillStyle = 'whitesmoke';
-    this.context.fillText('Game over', 260, 320)
+    this.context.fillText('GAME OVER', 215, 320)
     this.context.font = '20px Montserrat';
-    this.context.fillText('Click to play again!', 304, 355);
+    this.context.fillText('Click to play again', 310, 355);
     this.img.src= './images/space-bar.png';
     this.context.drawImage(this.img, 330, 360, 40, 20)
 
@@ -147,7 +147,7 @@ uptadeScore() {
     let score = document.getElementById("score"); 
     this.context.font = '32px Montserrat';
     this.context.fillStyle = 'whitesmoke';
-    this.context.fillText(`Score : ${(this.currentBox - 1)}`, 330, 80);
+    this.context.fillText(`SCORE : ${(this.currentBox - 1)}`, 335, 80);
 }
 
 restart() {
@@ -194,4 +194,13 @@ window.addEventListener('load', function() {
         game.mode = 'fall';
       }
     });
+
+    game.canvas.onclick = function() {
+      if (game.mode == 'gameOver')
+      game.restart();
+    else {
+      if (game.mode == 'bounce')
+        game.mode = 'fall';
+    }
+    }
 });
