@@ -20,7 +20,7 @@ constructor() {
 
 start() {
   this.boxes.splice(1, this.boxes.length - 1);
-  this.boxes.push({ x: 300, y:300, width:300, height:50});
+  this.boxes.push({ x: 250, y:300, width:300, height:50});
   this.mode = 'bounce';
   this.backgroundRoll = 0;
   this.frames = 0;
@@ -44,8 +44,9 @@ newBox() {
 
 drawBox() {
     for (let n = 0; n < this.boxes.length; n++) {
-        this.context.fillStyle = 'rgb(' + (136 - (n * 10)) + ',' + (192 - (n * 10)) + ',' + ( 218 - (n * 10)) + ')';
-        this.context.fillRect(this.boxes[n].x, 600 - this.boxes[n].y + this.backgroundRoll, this.boxes[n].width, this.height);
+      this.img.src= '.images/middle.png'
+      this.context.fillStyle = 'rgb(' + (1 + (n * 3)) + ',' + (56 + (n * 3)) + ',' + ( 53 + (n * 3)) + ')';
+        this.context.fillRect(this.boxes[n].x, 700 - this.boxes[n].y + this.backgroundRoll, this.boxes[n].width, this.height);
       }
 }
 
@@ -57,9 +58,8 @@ newCutBox() {
 }
 
 drawCutBox () {
-    this.img.src = './images/bottom.png'
-    this.context.fillStyle = 'black';
-    this.context.fillRect(this.cutBox.x, 600 - this.cutBox.y + this.backgroundRoll, this.cutBox.width, this.height);
+    this.context.fillStyle = 'rgb(59, 59, 59)';
+    this.context.fillRect(this.cutBox.x, 700 - this.cutBox.y + this.backgroundRoll, this.cutBox.width, this.height);
 }
 
 cutBoxPosition() {
@@ -129,7 +129,14 @@ framePosition() {
 
 gameOver() {
     this.mode = 'gameOver';
-    this.intro.innerHTML = 'Game over. <br> Press to play again!';
+    this.context.font = '50px Montserrat';
+    this.context.fillStyle = 'whitesmoke';
+    this.context.fillText('Game over', 260, 320)
+    this.context.font = '20px Montserrat';
+    this.context.fillText('Click to play again!', 304, 355);
+    this.img.src= './images/space-bar.png';
+    this.context.drawImage(this.img, 330, 360, 40, 20)
+
 }
 
 clear() {
@@ -138,7 +145,9 @@ clear() {
 
 uptadeScore() {
     let score = document.getElementById("score"); 
-    score.innerHTML= `Score : ${(this.currentBox - 1)}`
+    this.context.font = '32px Montserrat';
+    this.context.fillStyle = 'whitesmoke';
+    this.context.fillText(`Score : ${(this.currentBox - 1)}`, 330, 80);
 }
 
 restart() {
