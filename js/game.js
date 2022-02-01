@@ -134,8 +134,6 @@ gameOver() {
     this.context.fillText('GAME OVER', 215, 320)
     this.context.font = '20px Montserrat';
     this.context.fillText('Click to play again', 310, 355);
-    this.img.src= './images/space-bar.png';
-    this.context.drawImage(this.img, 330, 360, 40, 20)
 
 }
 
@@ -145,7 +143,7 @@ clear() {
 
 uptadeScore() {
     let score = document.getElementById("score"); 
-    this.context.font = '32px Montserrat';
+    this.context.font = '20px Montserrat';
     this.context.fillStyle = 'whitesmoke';
     this.context.fillText(`SCORE : ${(this.currentBox - 1)}`, 335, 80);
 }
@@ -183,10 +181,25 @@ uptadeGame() {
 }
 
 window.addEventListener('load', function() {  
-    const game = new Game();
+  let canvas = document.getElementById('canvas');
+  let context = canvas.getContext('2d');
+  context.font = '50px Montserrat';
+  context.fillStyle = 'whitesmoke';
+  context.fillText('CLICK', 310, 300);
+  context.fillText('TO START', 268, 360);
+  
+  
+  canvas.onclick = function() {
+    const game = new Game(); 
     game.start();
-
-
+    game.canvas.onclick = function() {
+        if (game.mode == 'gameOver')
+        game.restart();
+      else {
+        if (game.mode == 'bounce')
+          game.mode = 'fall';
+      }
+    }
     window.addEventListener('keydown', (event) => {
       if (event.code === 'Space' && game.mode == 'gameOver') {
         game.restart();
@@ -194,13 +207,6 @@ window.addEventListener('load', function() {
         game.mode = 'fall';
       }
     });
-
-    game.canvas.onclick = function() {
-      if (game.mode == 'gameOver')
-      game.restart();
-    else {
-      if (game.mode == 'bounce')
-        game.mode = 'fall';
-    }
-    }
+  }
 });
+   
