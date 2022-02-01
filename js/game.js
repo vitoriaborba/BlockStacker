@@ -25,14 +25,39 @@ constructor() {
         height: this.height,
     }
 }
+start() {
+  let firstBox = this.box = { x: 300, y:300, width:300};
+  this.boxes.push(firstBox);
+  if (this.mode != 'gameOver') {
+      this.uptadeScore();
+      this.drawBox();
+      this.drawCutBox();
+
+      if (this.mode == 'bounce') {
+          this.bounce();
+      }
+      if (this.mode == 'fall') {
+          this.fall();
+      }
+      this.animateCutBox();
+      this.framePosition();
+  }
+  window.addEventListener('keydown', (event) => {
+    if (event.code === 'Space' && this.mode == 'gameOver') {
+      restart();
+    } else if (event.code === 'Space' && this.mode === 'bounce') {
+      this.mode = 'fall';
+    }
+  });
+  window.requestAnimationFrame(this.start);
+}
 
 newBox() {
-    let allBoxes = this.box[this.currentBox] = {
-        x: 0,
-        y: (this.currentBox + 10) * this.height,
-        width: this.boxes[this.currentBox - 1].width,
-      };
-    this.boxes.push(allBoxes);
+  this.boxes[this.currentBox] = {
+    x: 0,
+    y: (this.currentBox + 10) * this.height,
+    width: this.boxes[this.currentBox - 1].width,
+  };
   }
 
 drawBox() {
@@ -69,33 +94,6 @@ animateCutBox() {
     this.cutBox.y = this.cutBox.y - this.ySpeed;
 }
 
-
-start() {
-    let firstBox = this.box = { x: 300, y:300, width:300};
-    this.boxes.push(firstBox);
-    if (this.mode != 'gameOver') {
-        this.uptadeScore();
-        this.drawBox();
-        this.drawCutBox();
-
-        if (this.mode == 'bounce') {
-            this.bounce();
-        }
-        if (this.mode == 'fall') {
-            this.fall();
-        }
-        this.animateCutBox();
-        this.framePosition();
-    }
-    window.addEventListener('keydown', (event) => {
-      if (event.code === 'Space' && this.mode == 'gameOver') {
-        restart();
-      } else if (event.code === 'Space' && this.mode === 'bounce') {
-        this.mode = 'fall';
-      }
-    });
-    window.requestAnimationFrame(this.start);
-}
 bounce() {
     this.boxes[this.currentBox].x = this.boxes[this.currentBox].x + this.xSpeed;
     if (this.xSpeed > 0 && this.boxes[this.currentBox].x + this.boxes[this.currentBox].width > canvas.width) {
