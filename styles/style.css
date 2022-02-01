@@ -1,12 +1,6 @@
 body {
     background-color: black
 }
-/* header{
-    color: rgb(189, 228, 236);
-    font-size: 50px;
-    font-family: 'Monoton', cursive;
-    text-align: center;
-} */
 .container {
     margin-top: 30px;
     display: flex;
