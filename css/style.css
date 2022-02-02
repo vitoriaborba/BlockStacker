@@ -8,13 +8,13 @@ body {
     align-items: center;
 }
 .canvas {
-    background-image: url('/docs/assets/images/background.jpg');
+    background-image: url('/docs/assets/background.jpg');
     background-size: cover;
     border: solid 1px whitesmoke;
 }
 
 .game-intro {
-    width: 100px;
+    width: 30px;
     height: 651px;
     background-color: black;
     display: flex;

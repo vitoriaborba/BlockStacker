@@ -45,8 +45,11 @@ newBox() {
 drawBox() {
     for (let n = 0; n < this.boxes.length; n++) {
       this.img.src= '.images/middle.png'
-      this.context.fillStyle = 'rgb(' + (1 + (n * 3)) + ',' + (56 + (n * 3)) + ',' + ( 53 + (n * 3)) + ')';
-        this.context.fillRect(this.boxes[n].x, 700 - this.boxes[n].y + this.backgroundRoll, this.boxes[n].width, this.height);
+      this.context.shadowBlur = '5';
+      this.context.shadowColor = 'rgb(221,160,221)';
+      this.context.strokeStyle = 'rgb(221,160,221)';
+      //this.context.fillStyle = 'rgb(' + (64 - (n * 8)) + ',' + (224 - (n * 8)) + ',' + ( 208 - (n * 8)) + ')';;
+      this.context.strokeRect(this.boxes[n].x, 700 - this.boxes[n].y + this.backgroundRoll, this.boxes[n].width, this.height);
       }
 }
 
@@ -58,7 +61,9 @@ newCutBox() {
 }
 
 drawCutBox () {
-    this.context.fillStyle = 'rgb(59, 59, 59)';
+    this.context.fillStyle = 'rgb(64,224,208)';
+    this.context.shadowColor = 'rgb(175,238,238)';
+    this.context.shadowBlur = '15';
     this.context.fillRect(this.cutBox.x, 700 - this.cutBox.y + this.backgroundRoll, this.cutBox.width, this.height);
 }
 
@@ -130,10 +135,12 @@ framePosition() {
 gameOver() {
     this.mode = 'gameOver';
     this.context.font = '60px Montserrat';
+    this.context.shadowColor = 'purple'
     this.context.fillStyle = 'whitesmoke';
-    this.context.fillText('GAME OVER', 215, 320)
-    this.context.font = '20px Montserrat';
-    this.context.fillText('Click to play again', 310, 355);
+    this.context.fillText('GAME OVER', 200, 320)
+    this.context.font = '15px Montserrat';
+    this.context.shadowBlur = '0';
+    this.context.fillText('CLICK TO PLAY AGAIN', 310, 355);
 
 }
 
@@ -142,10 +149,10 @@ clear() {
 }
 
 uptadeScore() {
-    let score = document.getElementById("score"); 
     this.context.font = '20px Montserrat';
+    this.context.shadowBlur = '0';
     this.context.fillStyle = 'whitesmoke';
-    this.context.fillText(`SCORE : ${(this.currentBox - 1)}`, 335, 80);
+    this.context.fillText(`SCORE : ${(this.currentBox - 1)}`, 340, 80);
 }
 
 restart() {
@@ -179,34 +186,3 @@ uptadeGame() {
 }
 
 }
-
-window.addEventListener('load', function() {  
-  let canvas = document.getElementById('canvas');
-  let context = canvas.getContext('2d');
-  context.font = '50px Montserrat';
-  context.fillStyle = 'whitesmoke';
-  context.fillText('CLICK', 310, 300);
-  context.fillText('TO START', 268, 360);
-  
-  
-  canvas.onclick = function() {
-    const game = new Game(); 
-    game.start();
-    game.canvas.onclick = function() {
-        if (game.mode == 'gameOver')
-        game.restart();
-      else {
-        if (game.mode == 'bounce')
-          game.mode = 'fall';
-      }
-    }
-    window.addEventListener('keydown', (event) => {
-      if (event.code === 'Space' && game.mode == 'gameOver') {
-        game.restart();
-      } else if (event.code === 'Space' && game.mode === 'bounce') {
-        game.mode = 'fall';
-      }
-    });
-  }
-});
-   
