@@ -49,9 +49,9 @@ newBox() {
 
 drawBox() {
     for (let n = 0; n < this.boxes.length; n++) {
-      this.context.shadowBlur = '5';
-      this.context.shadowColor = 'rgb(221,160,221)';
-      this.context.strokeStyle = 'rgb(221,160,221)';
+      this.context.shadowBlur = '10';
+      this.context.shadowColor = 'rgb(64,224,208)';
+      this.context.strokeStyle = 'rgb(64,224,208)';
       //this.context.fillStyle = 'rgb(' + (64 - (n * 8)) + ',' + (224 - (n * 8)) + ',' + ( 208 - (n * 8)) + ')';;
       this.context.strokeRect(this.boxes[n].x, 700 - this.boxes[n].y + this.backgroundRoll, this.boxes[n].width, this.height);
       }
@@ -65,8 +65,8 @@ newCutBox() {
 }
 
 drawCutBox () {
-    this.context.fillStyle = 'rgb(64,224,208)';
-    this.context.shadowColor = 'rgb(175,238,238)';
+    this.context.fillStyle = 'rgb(221,160,221)';
+    this.context.shadowColor = 'rgb(221,160,221)';
     this.context.shadowBlur = '15';
     this.context.fillRect(this.cutBox.x, 700 - this.cutBox.y + this.backgroundRoll, this.cutBox.width, this.height);
 }

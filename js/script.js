@@ -5,9 +5,9 @@ window.addEventListener('load', function() {
   context.shadowBlur = '0';
   context.fillStyle = 'rgb(95,158,160)';
   context.fillText('CLICK on the screen or press SPACE to drop the box', 195, 30);
-  context.fillStyle = 'whitesmoke';
+  context.fillStyle = 'rgb(95,158,160)';
   context.font = '17px Montserrat';
-  context.fillText('CLICK HERE & STACK AS MANY AS YOU CAN!', 196, 400);
+  context.fillText('CLICK HERE & STACK AS MANY AS YOU CAN!', 200, 400);
   context.fillStyle = 'black';
   context.shadowColor = 'white';
   context.shadowBlur = '20';
