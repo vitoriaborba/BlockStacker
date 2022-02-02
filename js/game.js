@@ -141,10 +141,12 @@ gameOver() {
     this.context.font = '60px Montserrat';
     this.context.shadowColor = 'purple'
     this.context.fillStyle = 'whitesmoke';
-    this.context.fillText('GAME OVER', 200, 320)
+    this.context.fillText('GAME', 200, 320)
+    this.context.shadowColor = 'turquoise'
+    this.context.fillText('OVER', 400, 320)
     this.context.font = '15px Montserrat';
     this.context.shadowBlur = '0';
-    this.context.fillText('CLICK TO PLAY AGAIN', 310, 355);
+    this.context.fillText('CLICK TO PLAY AGAIN', 305, 350);
 
 }
 
