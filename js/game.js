@@ -16,9 +16,9 @@ constructor() {
     this.cutBox = { x: 0, width: 0}
     this.intervalId = null;
     this.img = new Image ();
-   this.soundStart = new Audio ('/sounds/start.wav');
-    this.soundJump = new Audio ('/sounds/drop.wav');
-    this.soundGameOver = new Audio ('/sounds/game-over.wav');
+   this.soundStart = new Audio ('../sounds/start.wav');
+    this.soundJump = new Audio ('../sounds/drop.wav');
+    this.soundGameOver = new Audio ('../sounds/game-over.wav');
 
 }
 
@@ -49,7 +49,6 @@ newBox() {
 
 drawBox() {
     for (let n = 0; n < this.boxes.length; n++) {
-      this.img.src= '.images/middle.png'
       this.context.shadowBlur = '5';
       this.context.shadowColor = 'rgb(221,160,221)';
       this.context.strokeStyle = 'rgb(221,160,221)';
