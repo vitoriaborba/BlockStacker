@@ -3,21 +3,22 @@ window.addEventListener('load', function() {
   let context = canvas.getContext('2d');
   context.font = '15px Montserrat';
   context.shadowBlur = '0';
-  context.fillStyle = 'turquoise';
-  context.fillText('Click on the screen or press space-bar to drop the box', 180, 60);
+  context.fillStyle = 'rgb(95,158,160)';
+  context.fillText('CLICK on the screen or press SPACE to drop the box', 195, 30);
   context.fillStyle = 'whitesmoke';
-  context.fillText('STACK AS MANY BOXES AS YOU CAN!', 240, 90);
+  context.font = '17px Montserrat';
+  context.fillText('CLICK HERE & STACK AS MANY AS YOU CAN!', 196, 400);
   context.fillStyle = 'black';
   context.shadowColor = 'white';
   context.shadowBlur = '20';
-  context.fillRect(210, 309, 355, 70);
+  context.fillRect(199, 309, 377, 70);
   context.fillStyle = 'whitesmoke';
   context.font = '50px Montserrat';
   context.shadowColor = 'rgb(153,50,204)';
   context.shadowBlur = '15';
-  context.fillText('CLICK', 230, 360);
+  context.fillText('BOX', 210, 360);
   context.shadowColor = 'turquoise';
-  context.fillText('HERE', 395, 360);
+  context.fillText('STACKER', 330, 360);
  
 
     canvas.onclick = function() {
