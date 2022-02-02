@@ -16,9 +16,9 @@ constructor() {
     this.cutBox = { x: 0, width: 0}
     this.intervalId = null;
     this.img = new Image ();
-   this.soundStart = new Audio ('/docs/assets/sounds/start.wav');
-    this.soundJump = new Audio ('/docs/assets/sounds/drop.wav');
-    this.soundGameOver = new Audio ('/docs/assets/sounds/game-over.wav');
+   this.soundStart = new Audio ('../docs/assets/sounds/start.wav');
+    this.soundJump = new Audio ('../docs/assets/sounds/drop.wav');
+    this.soundGameOver = new Audio ('../docs/assets/sounds/game-over.wav');
 
 }
 
