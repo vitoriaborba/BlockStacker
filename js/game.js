@@ -16,9 +16,14 @@ constructor() {
     this.cutBox = { x: 0, width: 0}
     this.intervalId = null;
     this.img = new Image ();
+   this.soundStart = new Audio ('/sounds/start.wav');
+    this.soundJump = new Audio ('/sounds/drop.wav');
+    this.soundGameOver = new Audio ('/sounds/game-over.wav');
+
 }
 
 start() {
+  this.soundStart.play();
   this.boxes.splice(1, this.boxes.length - 1);
   this.boxes.push({ x: 260, y:300, width:300, height:50});
   this.mode = 'bounce';
@@ -107,11 +112,11 @@ if (this.xSpeed > 0) {
   
 collision() {
     if (this.boxes[this.currentBox].y === this.boxes[this.currentBox - 1].y + this.height) {
-      
-    console.log('collided');
+        this.soundJump.play();
         this.mode = 'bounce';
         this.difference = this.boxes[this.currentBox].x - this.boxes[this.currentBox - 1].x;
         if (Math.abs(this.difference) >= this.boxes[this.currentBox].width) {
+           this.soundGameOver.play();
             this.gameOver();
           }
           this.newCutBox();
@@ -156,6 +161,7 @@ uptadeScore() {
 }
 
 restart() {
+    this.soundStart.play();
     this.boxes.splice(1, this.boxes.length - 1);
     this.mode = 'bounce';
     this.backgroundRoll = 0;
