@@ -139,7 +139,7 @@ framePosition() {
 gameOver() {
     this.mode = 'gameOver';
     this.context.font = '60px Montserrat';
-    this.context.shadowColor = 'purple'
+    this.context.shadowColor = 'rgb(153,50,204)'
     this.context.fillStyle = 'whitesmoke';
     this.context.fillText('GAME', 200, 320)
     this.context.shadowColor = 'turquoise'

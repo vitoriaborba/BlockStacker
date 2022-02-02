@@ -7,16 +7,18 @@ window.addEventListener('load', function() {
   context.fillText('Click on the screen or press space-bar to drop the box', 180, 60);
   context.fillStyle = 'whitesmoke';
   context.fillText('STACK AS MANY BOXES AS YOU CAN!', 240, 90);
+  context.fillStyle = 'black';
+  context.shadowColor = 'white';
+  context.shadowBlur = '20';
+  context.fillRect(210, 309, 355, 70);
+  context.fillStyle = 'whitesmoke';
   context.font = '50px Montserrat';
-  context.shadowColor = 'purple'
-  context.shadowBlur = '15'
+  context.shadowColor = 'rgb(153,50,204)';
+  context.shadowBlur = '15';
   context.fillText('CLICK', 230, 360);
-  context.shadowColor = 'turquoise'
+  context.shadowColor = 'turquoise';
   context.fillText('HERE', 395, 360);
-  context.strokeStyle = 'white';
-  context.shadowColor = 'white'
-  context.shadowBlur = '5'
-  context.strokeRect(210, 310, 355, 70)
+ 
 
     canvas.onclick = function() {
     const game = new Game(); 
