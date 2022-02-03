@@ -5,8 +5,8 @@ window.addEventListener('load', function() {
   canvas.height = window.innerHeight;
 
   let particleArray = [];
-let adjustX = 13;
-let adjustY = -18;
+let adjustX = 14;
+let adjustY = -16;
 
  
 const mouse = {
@@ -49,8 +49,8 @@ class Particle {
         context.fill();
         context.shadowColor = 'rgb(153,50,204)'
         context.shadowBlur = '2';
-        this.img.src = '../docs/assets/BlockStackerLogo.png';
-        context.drawImage(this.img, 515, 60, 250, 42);
+        this.img.src = '/docs/assets/BlockStackerLogo.png';
+        context.drawImage(this.img, 515, 60, 260, 52);
 
     }
     update() {

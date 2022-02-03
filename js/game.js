@@ -18,9 +18,11 @@ constructor() {
     this.cutBox = { x: 0, width: 0}
     this.intervalId = null;
     this.img = new Image ();
-    this.soundStart = new Audio ('../docs/assets/sounds/start.mp3');
-    this.soundJump = new Audio ('../docs/assets/sounds/drop.mp3');
-    this.soundGameOver = new Audio ('../docs/assets/sounds/game-over.mp3');
+    this.soundStart = new Audio ('/docs/assets/sounds/start.mp3');
+    this.soundJump = new Audio ('/docs/assets/sounds/drop.mp3');
+    this.soundGameOver = new Audio ('/docs/assets/sounds/game-over.mp3');
+    this.soundBounce = new Audio ('/docs/assets/sounds/bounce.mp3');
+
 
 }
 
@@ -31,7 +33,7 @@ start() {
   this.mode = 'bounce';
   this.backgroundRoll = 0;
   this.frames = 0;
-  this.xSpeed = 4;
+  this.xSpeed = 5;
   this.currentBox = 1;
   this.newBox();
   this.cutBox.y = 0;
@@ -91,9 +93,11 @@ bounce() {
     this.boxes[this.currentBox].x = this.boxes[this.currentBox].x + this.xSpeed;
     if (this.xSpeed > 0 && this.boxes[this.currentBox].x + this.boxes[this.currentBox].width > this.canvas.width) {
      this.xSpeed = -this.xSpeed;
+     this.soundBounce.play();
     }
     if (this.xSpeed < 0 && this.boxes[this.currentBox].x < 0) {
      this.xSpeed = -this.xSpeed;
+     this.soundBounce.play();
     }
   }
 
@@ -148,7 +152,7 @@ gameOver() {
     this.context.fillText('OVER', 685, 320)
     this.context.font = 'italic 20px Montserrat';
     this.context.shadowBlur = '0';
-    this.context.fillText('CLICK TO PLAY AGAIN', 565, 360);
+    this.context.fillText('CLICK TO PLAY AGAIN', 563, 360);
 
 }
 
@@ -163,7 +167,7 @@ uptadeScore() {
     this.context.fillText(`SCORE : ${(this.currentBox - 1)}`, 618, 80);
     this.context.font = 'italic 13px Montserrat';
     this.context.fillStyle = '#a9a9a9';
-    this.context.fillText('PRESS SPACE OR CLICK ON THE SCREEN TO DROP THE BLOCK', 450, 17);
+    this.context.fillText('PRESS SPACE OR CLICK ON THE SCREEN TO DROP THE BLOCK', 450, 25);
 
 }
 
