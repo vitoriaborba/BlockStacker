@@ -4,6 +4,8 @@ constructor() {
     this.canvas = document.getElementById('canvas');
     this.context = this.canvas.getContext('2d');
     this.intro = document.getElementById("intro");
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
     this.frames = null;
     this.backgroundRoll = null;
     this.currentBox = null;
@@ -16,16 +18,16 @@ constructor() {
     this.cutBox = { x: 0, width: 0}
     this.intervalId = null;
     this.img = new Image ();
-   this.soundStart = new Audio ('../docs/assets/sounds/start.wav');
-    this.soundJump = new Audio ('../docs/assets/sounds/drop.wav');
-    this.soundGameOver = new Audio ('../docs/assets/sounds/game-over.wav');
+    this.soundStart = new Audio ('../docs/assets/sounds/start.mp3');
+    this.soundJump = new Audio ('../docs/assets/sounds/drop.mp3');
+    this.soundGameOver = new Audio ('../docs/assets/sounds/game-over.mp3');
 
 }
 
 start() {
   this.soundStart.play();
   this.boxes.splice(1, this.boxes.length - 1);
-  this.boxes.push({ x: 260, y:300, width:300, height:50});
+  this.boxes.push({ x: 520, y:300, width:300, height:50});
   this.mode = 'bounce';
   this.backgroundRoll = 0;
   this.frames = 0;
@@ -87,7 +89,7 @@ animateCutBox() {
 
 bounce() {
     this.boxes[this.currentBox].x = this.boxes[this.currentBox].x + this.xSpeed;
-    if (this.xSpeed > 0 && this.boxes[this.currentBox].x + this.boxes[this.currentBox].width > canvas.width) {
+    if (this.xSpeed > 0 && this.boxes[this.currentBox].x + this.boxes[this.currentBox].width > this.canvas.width) {
      this.xSpeed = -this.xSpeed;
     }
     if (this.xSpeed < 0 && this.boxes[this.currentBox].x < 0) {
@@ -138,15 +140,15 @@ framePosition() {
 
 gameOver() {
     this.mode = 'gameOver';
-    this.context.font = '60px Montserrat';
+    this.context.font = '100px Montserrat';
     this.context.shadowColor = 'rgb(153,50,204)'
     this.context.fillStyle = 'whitesmoke';
-    this.context.fillText('GAME', 200, 320)
+    this.context.fillText('GAME', 335, 320)
     this.context.shadowColor = 'turquoise'
-    this.context.fillText('OVER', 400, 320)
-    this.context.font = '15px Montserrat';
+    this.context.fillText('OVER', 660, 320)
+    this.context.font = '30px Montserrat';
     this.context.shadowBlur = '0';
-    this.context.fillText('CLICK TO PLAY AGAIN', 305, 350);
+    this.context.fillText('CLICK TO PLAY AGAIN', 480, 370);
 
 }
 
@@ -158,7 +160,7 @@ uptadeScore() {
     this.context.font = '20px Montserrat';
     this.context.shadowBlur = '0';
     this.context.fillStyle = 'whitesmoke';
-    this.context.fillText(`SCORE : ${(this.currentBox - 1)}`, 340, 80);
+    this.context.fillText(`SCORE : ${(this.currentBox - 1)}`, 610, 80);
 }
 
 restart() {

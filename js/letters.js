@@ -1,44 +1,46 @@
 const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
+const context = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let particleArray = [];
-let adjustX = 10;
-let adjustY = -10;
+let adjustX = 20;
+let adjustY = -18;
 
  
 const mouse = {
     x: null,
     y: null,
-    radius: 150
+    radius: 100
 }
 
 window.addEventListener('mousemove', function(event){
     mouse.x = event.x;
     mouse.y = event.y;
 });
-ctx.fillStyle = 'white';
-ctx.font = '30px Verdana';
-ctx.fillText('A', 0, 40);
-const textCoordinates = ctx.getImageData(0, 0, 100, 100);
+context.fillStyle = 'white';
+context.font = '10px Montserrat';
+context.fillText('PLAY', 0, 40);
+
+
+const textCoordinates = context.getImageData(0, 0, 100, 100);
 
 class Particle {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.size = 3;
+        this.size = 5;
         this.baseX = this.x;
         this.baseY = this.y;
-        this.density = (Math.random() * 40) + 5;
+        this.density = (Math.random() * 60) + 35;
         this.distance;
     }
     draw () {
-        ctx.fillStyle = 'white';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.closePath();
-        ctx.fill();
+        context.fillStyle = 'turquoise';
+        context.beginPath();
+        context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        context.closePath();
+        context.fill();
     }
     update() {
         let dx = mouse.x - this.x;
@@ -66,6 +68,7 @@ class Particle {
      }
     }
 }
+
 function init() {
     particleArray = [];
    for (let y = 0, y2 = textCoordinates.height; y < y2; y++){
@@ -82,7 +85,7 @@ function init() {
 init();
 
 function animate(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    context.clearRect(0, 0, canvas.width, canvas.height);
     for (let i = 0; i < particleArray.length; i++) {
         particleArray[i].draw();
         particleArray[i].update();
@@ -100,14 +103,14 @@ function connect(){
       let dx = particleArray[a].x - particleArray[b].x;
       let dy = particleArray[a].y - particleArray[b].y;
       let distance = Math.sqrt(dx * dx + dy * dy);
-      opacityValue = 1 - (distance/50);
-      ctx.strokeStyle = 'rgba(255, 255, 255,' + opacityValue + ')';
+      opacityValue = 1 - (distance/30);
+      context.strokeStyle = 'rgba(255, 255, 255,' + opacityValue + ')';
       if(distance < 50) {
-          ctx.lineWidth = 2;
-          ctx.beginPath();
-          ctx.moveTo(particleArray[a].x, particleArray[a].y);
-          ctx.lineTo(particleArray[b].x, particleArray[b].y);
-          ctx.stroke();
+          context.lineWidth = 2;
+          context.beginPath();
+          context.moveTo(particleArray[a].x, particleArray[a].y);
+          context.lineTo(particleArray[b].x, particleArray[b].y);
+          context.stroke();
            }
         }
     }

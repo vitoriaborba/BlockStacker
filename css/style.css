@@ -10,7 +10,7 @@ body {
 .canvas {
     background-image: url('../docs/assets/background.jpg');
     background-size: cover;
-    border: solid 1px whitesmoke;
+    
 }
 
 .game-intro {
@@ -28,7 +28,7 @@ body {
    
 } 
 
-/* *{
+*{
    margin: 0;
    padding: 0;
    box-sizing: border-box;
@@ -40,4 +40,4 @@ body {
     background: black;
     top: 0;
     left: 0;
-} */
+} 
