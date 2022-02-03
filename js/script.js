@@ -49,7 +49,7 @@ class Particle {
         context.fill();
         context.shadowColor = 'rgb(153,50,204)'
         context.shadowBlur = '2';
-        this.img.src = '/docs/assets/BlockStackerLogo.png';
+        this.img.src = './docs/assets/images/logo.png';
         context.drawImage(this.img, 515, 60, 260, 52);
 
     }

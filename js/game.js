@@ -18,10 +18,10 @@ constructor() {
     this.cutBox = { x: 0, width: 0}
     this.intervalId = null;
     this.img = new Image ();
-    this.soundStart = new Audio ('/docs/assets/sounds/start.mp3');
-    this.soundJump = new Audio ('/docs/assets/sounds/drop.mp3');
-    this.soundGameOver = new Audio ('/docs/assets/sounds/game-over.mp3');
-    this.soundBounce = new Audio ('/docs/assets/sounds/bounce.mp3');
+    this.soundStart = new Audio ('./docs/assets/sounds/start.mp3');
+    this.soundJump = new Audio ('./docs/assets/sounds/drop.mp3');
+    this.soundGameOver = new Audio ('./docs/assets/sounds/game-over.mp3');
+    this.soundBounce = new Audio ('./docs/assets/sounds/bounce.mp3');
 
 
 }
