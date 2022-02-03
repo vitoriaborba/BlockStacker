@@ -27,11 +27,11 @@ constructor() {
 start() {
   this.soundStart.play();
   this.boxes.splice(1, this.boxes.length - 1);
-  this.boxes.push({ x: 520, y:300, width:300, height:50});
+  this.boxes.push({ x: 530, y:300, width:300, height:50});
   this.mode = 'bounce';
   this.backgroundRoll = 0;
   this.frames = 0;
-  this.xSpeed = 2;
+  this.xSpeed = 4;
   this.currentBox = 1;
   this.newBox();
   this.cutBox.y = 0;
@@ -54,7 +54,7 @@ drawBox() {
       this.context.shadowBlur = '10';
       this.context.shadowColor = 'rgb(64,224,208)';
       this.context.strokeStyle = 'rgb(64,224,208)';
-      //this.context.fillStyle = 'rgb(' + (64 - (n * 8)) + ',' + (224 - (n * 8)) + ',' + ( 208 - (n * 8)) + ')';;
+      //this.context.fillStyle = 'rgb(' + (64 - (n * 8)) + ',' + (224 - (n * 8)) + ',' + ( 208 - (n * 8)) + ')';
       this.context.strokeRect(this.boxes[n].x, 700 - this.boxes[n].y + this.backgroundRoll, this.boxes[n].width, this.height);
       }
 }
@@ -143,12 +143,12 @@ gameOver() {
     this.context.font = '100px Montserrat';
     this.context.shadowColor = 'rgb(153,50,204)'
     this.context.fillStyle = 'whitesmoke';
-    this.context.fillText('GAME', 335, 320)
+    this.context.fillText('GAME', 370, 320)
     this.context.shadowColor = 'turquoise'
-    this.context.fillText('OVER', 660, 320)
-    this.context.font = '30px Montserrat';
+    this.context.fillText('OVER', 685, 320)
+    this.context.font = 'italic 20px Montserrat';
     this.context.shadowBlur = '0';
-    this.context.fillText('CLICK TO PLAY AGAIN', 480, 370);
+    this.context.fillText('CLICK TO PLAY AGAIN', 565, 360);
 
 }
 
@@ -157,10 +157,14 @@ clear() {
 }
 
 uptadeScore() {
-    this.context.font = '20px Montserrat';
+    this.context.font = 'italic 20px Montserrat';
     this.context.shadowBlur = '0';
     this.context.fillStyle = 'whitesmoke';
-    this.context.fillText(`SCORE : ${(this.currentBox - 1)}`, 610, 80);
+    this.context.fillText(`SCORE : ${(this.currentBox - 1)}`, 618, 80);
+    this.context.font = 'italic 13px Montserrat';
+    this.context.fillStyle = '#a9a9a9';
+    this.context.fillText('PRESS SPACE OR CLICK ON THE SCREEN TO DROP THE BLOCK', 450, 17);
+
 }
 
 restart() {

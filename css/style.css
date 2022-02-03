@@ -1,32 +1,9 @@
-body {
-    background-color: black
-}
-.container {
-    margin-top: 30px;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-}
+
 .canvas {
     background-image: url('../docs/assets/background.jpg');
     background-size: cover;
     
 }
-
-.game-intro {
-    width: 30px;
-    height: 651px;
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    font-family: 'Montserrat';
-    font-size: 20px;
-    text-align: center;
-    color: white;
-   
-} 
 
 *{
    margin: 0;

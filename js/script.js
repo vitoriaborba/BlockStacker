@@ -3,24 +3,6 @@ window.addEventListener('load', function() {
   let context = canvas.getContext('2d');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
- /*  context.font = '15px Montserrat';
-  context.shadowBlur = '0';
-  context.fillStyle = 'rgb(95,158,160)';
-  context.fillText('CLICK on the screen or press SPACE to drop the box', 195, 30);
-  context.fillStyle = 'rgb(95,158,160)';
-  context.font = '17px Montserrat';
-  context.fillText('CLICK HERE & STACK AS MANY AS YOU CAN!', 200, 400);
-  context.fillStyle = 'black';
-  context.shadowColor = 'white';
-  context.shadowBlur = '20';
-  context.fillRect(199, 309, 377, 70);
-  context.fillStyle = 'whitesmoke';
-  context.font = '50px Montserrat';
-  context.shadowColor = 'rgb(153,50,204)';
-  context.shadowBlur = '15';
-  context.fillText('BOX', 210, 360);
-  context.shadowColor = 'turquoise';
-  context.fillText('STACKER', 330, 360); */
 
   let particleArray = [];
 let adjustX = 13;
@@ -30,7 +12,7 @@ let adjustY = -18;
 const mouse = {
     x: null,
     y: null,
-    radius: 100
+    radius: 150
 }
 
 window.addEventListener('mousemove', function(event){
@@ -40,6 +22,8 @@ window.addEventListener('mousemove', function(event){
 context.fillStyle = 'white';
 context.font = '15px Montserrat';
 context.fillText('PLAY', 0, 40);
+
+
 
 
 const textCoordinates = context.getImageData(0, 0, 100, 100);
@@ -53,6 +37,7 @@ class Particle {
         this.baseY = this.y;
         this.density = (Math.random() * 40) + 5;
         this.distance;
+        this.img = new Image();
     }
     draw () {
         context.shadowColor = 'rgb(177, 95, 177)'
@@ -62,6 +47,11 @@ class Particle {
         context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         context.closePath();
         context.fill();
+        context.shadowColor = 'rgb(153,50,204)'
+        context.shadowBlur = '2';
+        this.img.src = '../docs/assets/BlockStackerLogo.png';
+        context.drawImage(this.img, 515, 60, 250, 42);
+
     }
     update() {
         let dx = mouse.x - this.x;
@@ -80,10 +70,10 @@ class Particle {
         } else {
             if (this.x != this.baseX) {
                 let dx = this.x - this.baseX;
-                this.x -= dx/10;
+                this.x -= dx/20;
             } if (this.y !== this.baseY) {
                 let dy = this.y - this.baseY;
-                this.y -= dy/10;
+                this.y -= dy/20;
 
       }
      }
