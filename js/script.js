@@ -40,14 +40,14 @@ class Particle {
         this.img = new Image();
     }
     draw () {
-        context.shadowColor = 'rgb(177, 95, 177)'
+        context.shadowColor = 'rgb(192, 0, 166)'
         context.shadowBlur = '15';
-        context.fillStyle = 'rgb(177, 95, 177)';
+        context.fillStyle = 'rgb(192, 0, 166)';
         context.beginPath();
         context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         context.closePath();
         context.fill();
-        context.shadowColor = 'rgb(153,50,204)'
+        context.shadowColor = 'rgb(192, 0, 166)'
         context.shadowBlur = '2';
         this.img.src = './docs/assets/images/logo.png';
         context.drawImage(this.img, 515, 60, 260, 52);
@@ -70,10 +70,10 @@ class Particle {
         } else {
             if (this.x != this.baseX) {
                 let dx = this.x - this.baseX;
-                this.x -= dx/20;
+                this.x -= dx/10;
             } if (this.y !== this.baseY) {
                 let dy = this.y - this.baseY;
-                this.y -= dy/20;
+                this.y -= dy/10;
 
       }
      }

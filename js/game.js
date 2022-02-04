@@ -70,7 +70,7 @@ newCutBox() {
 
 drawCutBox () {
     this.context.fillStyle = 'rgb(221,160,221)';
-    this.context.shadowColor = 'rgb(221,160,221)';
+    this.context.shadowColor = 'rgb(192, 0, 166)';
     this.context.shadowBlur = '15';
     this.context.fillRect(this.cutBox.x, 700 - this.cutBox.y + this.backgroundRoll, this.cutBox.width, this.height);
 }

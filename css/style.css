@@ -1,6 +1,6 @@
 
 .canvas {
-    background-image: url('../docs/assets/images/background.jpg');
+    background-image: url('../docs/assets/images/blue.jpg');
     background-size: cover;
     
 }
@@ -14,7 +14,7 @@
 
 body {
     overflow: hidden;
-    background: black;
+    background: rgb(0, 0, 0);
     top: 0;
     left: 0;
 } 
